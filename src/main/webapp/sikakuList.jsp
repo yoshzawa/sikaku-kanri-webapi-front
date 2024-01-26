@@ -1,3 +1,6 @@
+<%@page import="api.Sikaku"%>
+<%@page import="java.util.List"%>
+<%@page import="api.Exam"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,7 +41,11 @@
         }
     </style>
 </head>
+
 <body>
+<%
+	List<Sikaku> sikakus = (List<Sikaku>)request.getAttribute("sikakus");
+%>
 
 <div class="container">
     <div class="page-selector">
@@ -61,19 +68,18 @@
                 </tr>
             </thead>
             <tbody>
+            <% for( Sikaku e:sikakus){
+            %>
                 <tr>
-                    <td>1</td>
-                    <td>基本情報技術者試験</td>
-                    <td>令和3年11月</td>
+                    <td><%= e.getID() %></td>
+                    <td><%= e.getNAME() %></td>
+                    <td><%= e.getDATE() %></td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>応用情報技術者試験</td>
-                    <td>令和4年4月</td>
-                </tr>
+            <% }
+            %>
             </tbody>
         </table>
-        <a href="./sikakuAdd.html" class="btn btn-primary">新規資格登録</a>
+        <a href="./add" class="btn btn-primary">新規資格登録</a>
     </div>
 </div>
 

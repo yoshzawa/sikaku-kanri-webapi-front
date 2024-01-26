@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="api.Exam"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,7 +26,9 @@
     </style>
 </head>
 <body>
-
+<%
+	List<Exam> exams = (List<Exam>)request.getAttribute("exams");
+%>
 <div class="container">
     <h2>資格追加フォーム</h2>
     <form>
@@ -32,7 +36,11 @@
             <label for="qualificationSelect" class="form-label">資格名</label>
             <select class="form-select" id="qualificationSelect">
                 <option selected disabled>資格を選択してください</option>
-                <option value="基本情報技術者試験">基本情報技術者試験</option>
+                <%for(Exam e : exams){
+                %>
+                <option value="<%= e.getID() %>"><%= e.getNAME() %> </option>
+                <%}
+                %>
                 <option value="応用情報技術者試験">応用情報技術者試験</option>
             </select>
         </div>
