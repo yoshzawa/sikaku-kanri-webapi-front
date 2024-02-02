@@ -44,43 +44,34 @@
 
 <body>
 <%
-	List<Sikaku> sikakus = (List<Sikaku>)request.getAttribute("sikakus");
+	List<Exam> exams = (List<Exam>)request.getAttribute("exams");
 %>
 
 <div class="container">
-    <div class="page-selector">
-        <h2>資格管理システム</h2>
-        <ul>
-            <li><a href="../sikaku/list"><strong>合格資格一覧</strong></a></li>
-            <li><a href="../voucher/list">バウチャー一覧</a></li>
-        </ul>
-    </div>
+    <h2>資格追加フォーム</h2>
+    <form method="post" action="./list">
 
-    <div class="data-table">
-        <h2>データ一覧</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>番号</th>
-                    <th>資格名</th>
-                    <th>合格年月</th>
-                </tr>
-            </thead>
-            <tbody>
-            <% for( Sikaku e:sikakus){
-            %>
-                <tr>
-                    <td><%= e.getID() %></td>
-                    <td><%= e.getNAME() %></td>
-                    <td><%= e.getDATE() %></td>
-                </tr>
-            <% }
-            %>
-            </tbody>
-        </table>
-        <a href="./add" class="btn btn-primary">合格した資格の登録</a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="qualificationCode" class="form-label">資格コード</label>
+                <input type="text" class="form-control" id="qualificationCode" value="資格コードを入力">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="qualificationName" class="form-label">資格名</label>
+                <input type="text" class="form-control" id="qualificationName" value="資格名を入力">
+            </div>
+        </div>
     </div>
+            <button type="submit" class="btn btn-primary">登録</button>
+                <a href="./list" class="btn btn-danger">戻る</a>
+    
+        </form>
+    
 </div>
+
 
 <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

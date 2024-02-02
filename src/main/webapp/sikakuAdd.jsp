@@ -41,12 +41,16 @@
                 <%}                %>
             </select>
         </div>
+                <a href="../exam/list" class="btn btn-primary">新規資格登録</a>
         <div class="mb-3">
             <label for="datePicker" class="form-label">合格年月</label>
             <input type="text" name="examDate" class="form-control" id="datePicker" placeholder="カレンダーから選択">
         </div>
         <button type="submit" class="btn btn-primary">登録</button>
+            <a href="./list" class="btn btn-danger">戻る</a>
+        
     </form>
+        
 </div>
 
 <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->

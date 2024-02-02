@@ -44,7 +44,7 @@
 
 <body>
 <%
-	List<Sikaku> sikakus = (List<Sikaku>)request.getAttribute("sikakus");
+	List<Exam> exams = (List<Exam>)request.getAttribute("exams");
 %>
 
 <div class="container">
@@ -54,6 +54,7 @@
             <li><a href="../sikaku/list"><strong>合格資格一覧</strong></a></li>
             <li><a href="../voucher/list">バウチャー一覧</a></li>
         </ul>
+        <a href="./sikakuAdd.html" class="btn btn-primary">新規資格登録</a>
     </div>
 
     <div class="data-table">
@@ -63,22 +64,20 @@
                 <tr>
                     <th>番号</th>
                     <th>資格名</th>
-                    <th>合格年月</th>
                 </tr>
             </thead>
             <tbody>
-            <% for( Sikaku e:sikakus){
+            <% for( Exam e:exams){
             %>
                 <tr>
                     <td><%= e.getID() %></td>
                     <td><%= e.getNAME() %></td>
-                    <td><%= e.getDATE() %></td>
                 </tr>
             <% }
             %>
             </tbody>
         </table>
-        <a href="./add" class="btn btn-primary">合格した資格の登録</a>
+        <a href="./add" class="btn btn-primary">新規資格登録</a>
     </div>
 </div>
 

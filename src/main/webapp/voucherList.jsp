@@ -46,9 +46,8 @@
     <div class="page-selector">
         <h2>資格管理システム</h2>
         <ul>
-            <li><a href="./sikakuView.html">合格資格一覧</a></li>
-            <li><a href="./voucherView.html"><strong>バウチャー一覧</strong></a></li>
-            <li><a href="./scheduleView.html">受験予定資格</a></li>
+            <li><a href="../sikaku/list">合格資格一覧</a></li>
+            <li><a href="../voucher/list"><strong>バウチャー一覧</strong></a></li>
         </ul>
     </div>
 
