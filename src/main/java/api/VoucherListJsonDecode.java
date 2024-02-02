@@ -11,9 +11,9 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class SikakuListJsonDecode {
+public class VoucherListJsonDecode {
 
-	public static List<Sikaku> getSikakuList() {
+	public static List<Voucher> getVoucherList() {
 		try {
 			// HTTPリクエストを送信してJSONを取得
 			URL url = new URL(ServerInterface.server+"/sikaku/list?token=abcd1234");
@@ -30,18 +30,18 @@ public class SikakuListJsonDecode {
 
 			// JSONをパースしてIDとNAMEの配列として受け取る
 			Gson gson = new Gson();
-			Type type = new TypeToken<List<Sikaku>>() {	}.getType();
-			List<Sikaku> vouchers = gson.fromJson(response.toString(), type);
+			Type type = new TypeToken<List<Voucher>>() {	}.getType();
+			List<Voucher> sikakus = gson.fromJson(response.toString(), type);
 
-			return vouchers;
+			return sikakus;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ArrayList<Sikaku>();
+			return new ArrayList<Voucher>();
 		}
 
 	}
-	public static List<Sikaku> addSikaku(String ID,String DATE) {
+	public static List<Voucher> addVoucher(String ID,String DATE) {
 		try {
 			// HTTPリクエストを送信してJSONを取得
 			URL url = new URL(ServerInterface.server+"/sikaku/add?token=abcd1234&ID="+ID+"&DATE="+DATE);
@@ -58,15 +58,15 @@ public class SikakuListJsonDecode {
 
 			// JSONをパースしてIDとNAMEの配列として受け取る
 			Gson gson = new Gson();
-			Type type = new TypeToken<List<Sikaku>>() {
+			Type type = new TypeToken<List<Voucher>>() {
 			}.getType();
-			List<Sikaku> vouchers = gson.fromJson(response.toString(), type);
+			List<Voucher> exams = gson.fromJson(response.toString(), type);
 
-			return vouchers;
+			return exams;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ArrayList<Sikaku>();
+			return new ArrayList<Voucher>();
 		}
 
 	}

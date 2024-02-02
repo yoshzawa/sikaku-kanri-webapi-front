@@ -31,22 +31,19 @@
 %>
 <div class="container">
     <h2>資格追加フォーム</h2>
-    <form>
+    <form method="post" action="./list">
         <div class="mb-3">
             <label for="qualificationSelect" class="form-label">資格名</label>
-            <select class="form-select" id="qualificationSelect">
+            <select class="form-select" id="qualificationSelect" name="examId">
                 <option selected disabled>資格を選択してください</option>
-                <%for(Exam e : exams){
-                %>
+                <%for(Exam e : exams){                %>
                 <option value="<%= e.getID() %>"><%= e.getNAME() %> </option>
-                <%}
-                %>
-                <option value="応用情報技術者試験">応用情報技術者試験</option>
+                <%}                %>
             </select>
         </div>
         <div class="mb-3">
             <label for="datePicker" class="form-label">合格年月</label>
-            <input type="text" class="form-control" id="datePicker" placeholder="カレンダーから選択">
+            <input type="text" name="examDate" class="form-control" id="datePicker" placeholder="カレンダーから選択">
         </div>
         <button type="submit" class="btn btn-primary">登録</button>
     </form>
@@ -59,7 +56,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     flatpickr("#datePicker", {
-        dateFormat: "Y年m月d日", // 日付フォーマットを設定
+        dateFormat: "Y/m/d", // 日付フォーマットを設定
         locale: "ja", // 日本語に設定
     });
 </script>

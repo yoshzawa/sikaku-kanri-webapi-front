@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import api.Sikaku;
-import api.SikakuListJsonDecode;
+import api.Exam;
+import api.ExamListJsonDecode;
 
 /**
  * Servlet implementation class SikakuListServlet
  */
-@WebServlet({ "/sikaku/list" })
-public class SikakuListServlet extends HttpServlet {
+@WebServlet({ "/exam/list" })
+public class ExamListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SikakuListServlet() {
+    public ExamListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,18 +31,18 @@ public class SikakuListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Sikaku> sikakus = SikakuListJsonDecode.getSikakuList();
-		request.setAttribute("sikakus", sikakus);
-		request.getRequestDispatcher("/sikakuList.jsp").forward(request, response);
+		List<Exam> exams = ExamListJsonDecode.getExamList();
+		request.setAttribute("exams", exams);
+		request.getRequestDispatcher("/examList.jsp").forward(request, response);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String examId = request.getParameter("examId");
-		String examDate = request.getParameter("examDate");
+		String examName = request.getParameter("examName");
 		
-		SikakuListJsonDecode.addSikaku(examId,examDate);
+		ExamListJsonDecode.addExam(examId,examName);
 		response.sendRedirect("./list");
 	}
 
