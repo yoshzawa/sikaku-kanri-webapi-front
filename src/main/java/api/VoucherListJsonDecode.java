@@ -16,7 +16,7 @@ public class VoucherListJsonDecode {
 	public static List<Voucher> getVoucherList() {
 		try {
 			// HTTPリクエストを送信してJSONを取得
-			URL url = new URL(ServerInterface.server+"/sikaku/list?token=abcd1234");
+			URL url = new URL(ServerInterface.server+"/voucher/list?token=abcd1234");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 
@@ -41,10 +41,10 @@ public class VoucherListJsonDecode {
 		}
 
 	}
-	public static List<Voucher> addVoucher(String ID,String DATE) {
+	public static List<AddResult> addVoucher(String ID,String DATE) {
 		try {
 			// HTTPリクエストを送信してJSONを取得
-			URL url = new URL(ServerInterface.server+"/sikaku/add?token=abcd1234&ID="+ID+"&DATE="+DATE);
+			URL url = new URL(ServerInterface.server+"/voucher/add?token=abcd1234&ID="+ID+"&DATE="+DATE);
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 
@@ -58,15 +58,15 @@ public class VoucherListJsonDecode {
 
 			// JSONをパースしてIDとNAMEの配列として受け取る
 			Gson gson = new Gson();
-			Type type = new TypeToken<List<Voucher>>() {
+			Type type = new TypeToken<List<AddResult>>() {
 			}.getType();
-			List<Voucher> exams = gson.fromJson(response.toString(), type);
+			List<AddResult> exams = gson.fromJson(response.toString(), type);
 
 			return exams;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ArrayList<Voucher>();
+			return new ArrayList<AddResult>();
 		}
 
 	}

@@ -42,6 +42,34 @@ public class ExamListJsonDecode {
 		}
 
 	}
+	public static List<AddResult> addExam(String ID,String NAME) {
+		try {
+			// HTTPリクエストを送信してJSONを取得
+			URL url = new URL(ServerInterface.server+"/sikaku/add?token=abcd1234&ID="+ID+"&NAME="+NAME);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("POST");
 
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuilder response = new StringBuilder();
+			String line;
+			while ((line = reader.readLine()) != null) {
+				response.append(line);
+			}
+			reader.close();
+
+			// JSONをパースしてIDとNAMEの配列として受け取る
+			Gson gson = new Gson();
+			Type type = new TypeToken<List<AddResult>>() {
+			}.getType();
+			List<AddResult> vouchers = gson.fromJson(response.toString(), type);
+
+			return vouchers;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<AddResult>();
+		}
+
+	}
 
 }

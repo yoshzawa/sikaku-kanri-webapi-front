@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="api.Voucher"%>
+<%@page import="api.VoucherType"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,9 +44,8 @@
 </head>
 <body>
 <%
-	List<Voucher> vouchers = (List<Voucher>)request.getAttribute("vouchers");
+	List<VoucherType> vouchers = (List<VoucherType>)request.getAttribute("vouchers");
 %>
-
 <div class="container">
     <div class="page-selector">
         <h2>資格管理システム</h2>
@@ -63,23 +62,16 @@
                 <tr>
                     <th>番号</th>
                     <th>バウチャー名</th>
-                    <th>期限</th>
                 </tr>
             </thead>
             <tbody>
-                        <% for(Voucher vt : vouchers){ %>
-            
+            <% for(VoucherType vt : vouchers) {%>
                 <tr>
                     <td><%= vt.getID() %></td>
                     <td><%= vt.getNAME() %></td>
-                    <td><%= vt.getDATE() %></td>
                 </tr>
                 <% } %>
-                <tr>
-                    <td>2</td>
-                    <td>Oracle 監督あり試験</td>
-                    <td>令和6年3月</td>
-                </tr>
+
             </tbody>
         </table>
         <div class="btn-container">

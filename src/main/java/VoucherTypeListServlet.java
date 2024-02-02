@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import api.VoucherType;
+import api.VoucherTypeListJsonDecode;
 
 /**
  * Servlet implementation class SikakuListServlet
@@ -32,7 +33,7 @@ public class VoucherTypeListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<VoucherType> vouchers = VoucherTypeListJsonDecode.getVoucherTypeList();
 		request.setAttribute("vouchers", vouchers);
-		request.getRequestDispatcher("/vouchersList.jsp").forward(request, response);
+		request.getRequestDispatcher("/voucherTypeList.jsp").forward(request, response);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

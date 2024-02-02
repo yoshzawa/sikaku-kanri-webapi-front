@@ -31,8 +31,8 @@ public class SikakuAddServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Exam> exams = ExamListJsonDecode.getExamList();
-		request.setAttribute("exams", exams);
+		List<Exam> result = ExamListJsonDecode.getExamList();
+		request.setAttribute("result", result);
 		request.getRequestDispatcher("/sikakuAdd.jsp").forward(request, response);
 	}
 
